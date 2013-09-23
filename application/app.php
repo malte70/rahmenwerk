@@ -23,13 +23,13 @@ class Application {
 	 * application name
 	 * @param string
 	 */
-	public $appname = "rahmenwerk Application";
+	public $appname = "";
 	
 	/**
 	 * base URL
 	 * @param string
 	 */
-	public $baseurl = 'http://example.com/';
+	public $baseurl = '';
 	
 	/**
 	 * database object
@@ -98,13 +98,16 @@ class Application {
 		/**
 		 * display template
 		 */
-		require_once("./app/templates/header.php");
-		$view_content = file_get_contents("./app/views/".$this->view.".html");
+		require_once("./themes/".CFG_THEME."/header.php");
+		if (file_exists("./themes/".CFG_THEME."/view.".$this->view.".html"))
+			$view_content = file_get_contents("./themes/".CFG_THEME."/view.".$this->view.".html");
+		else
+			$view_content = file_get_contents("./themes/default/view.".$this->view.".html");
 		foreach ($this->display_data as $key => $value) {
 			$view_content = str_replace("{%".$key."%}", $value, $view_content);
 		}
 		print $view_content;
-		require_once("./app/templates/footer.php");
+		require_once("./themes/".CFG_THEME."/footer.php");
 	}
 }
 ?>

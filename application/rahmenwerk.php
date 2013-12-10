@@ -9,6 +9,8 @@
  * @license http://malte-bublitz.de/license/bsd.txt 2-clause BSD license
  */
 
+require_once("lib/startswith.php");
+
 /**
  * autoload function
  */
@@ -18,6 +20,8 @@ function autoload_class($class_name) {
 		"./application/classes/"
 	);
 	foreach ($search_paths as $path) {
+		if (startswith($class_name, "rahmenwerk\\"))
+			$class_name = substr($class_name, strlen("rahmenwerk\\"));
 		$file_name = $path.$class_name.".php";
 		if (file_exists($file_name)) {
 			include_once($file_name);
@@ -30,7 +34,5 @@ function autoload_class($class_name) {
  * register the autoload function.
  */
 spl_autoload_register("autoload_class");
-
-require_once("app.php");
 
 ?>

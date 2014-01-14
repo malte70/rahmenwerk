@@ -1,0 +1,19 @@
+/**
+ * rahmenwerk CSS
+ * 
+ * compile using compass on the CLI or Koala (http://koala-app.com/)
+ */
+
+/**
+ * libraries
+ *  normalize: http://necolas.github.io/normalize.css/
+ *  lemonade:  http://lemonade.im/
+ */
+@import "normalize";
+@import "lemonade";
+
+/**
+ * rahmenwerk default template's style
+ */
+@import "variables";
+@import "base";

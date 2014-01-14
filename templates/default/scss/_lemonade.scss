@@ -1,0 +1,98 @@
+/*!
+ * Lemonade v1.1 lemonade.im
+ * @author: Joe Richardson
+ * License MIT http://www.opensource.org/licenses/mit-license.php
+ *
+ * Sass version by Dang Van Thanh
+ * https://github.com/dangvanthanh/lemonade.sass
+ */
+
+/* Import media queries mixin */
+@import "respond-to";
+/* Variables */
+$width : 100%;
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}  
+
+/* Set the width of the grid */
+.frame {
+  width: 100%;
+  margin: 0 auto;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }  
+}    
+
+/* Attribute selector */
+[class*="bit-"] {
+  float: left;
+  padding: 0.3em;
+  &:last-of-type {
+    float: right;
+  }  
+}    
+
+/* Main width */
+@for $i from 1 through 12 {
+  .bit-#{$i} {
+    width: $width / $i;
+  }
+}
+
+/* Landscape mobile & down */
+@include respond-to($phone) {
+  %width {
+    width: $width;
+  }
+
+  @for $i from 1 through 12 {
+    .bit-#{$i} {
+      @extend %width;
+    }
+  }
+}      
+
+/* Portrait tablet to landscape */
+@include respond-to($tablet-portrait) {
+  .bit-4,
+  .bit-6,
+  .bit-8,
+  .bit-10,
+  .bit-12 {
+    width: $width / 2;
+  }
+
+  .bit-1,
+  .bit-2,
+  .bit-3,
+  .bit-5,
+  .bit-7,
+  .bit-9, 
+  .bit-11 {
+    width: $width;
+  }
+}
+/* Landscape to small desktop */
+@include respond-to($tablet-landscape) {
+  .bit-2,
+  .bit-7 {
+    width: $width;
+  }
+
+  .bit-4,
+  .bit-8,
+  .bit-10,
+  .bit-12 {
+    width: $width / 2;
+  }
+}

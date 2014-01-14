@@ -1,0 +1,15 @@
+/**
+ * Media Queries Mixin
+ */
+
+// Variables
+$phone: "(max-width: 30em)";
+$tablet-portrait: "(min-width: 30em) and (max-width: 50em)";
+$tablet-landscape: "(min-width: 50em) and (max-width: 68.75em)";
+
+// Mixins
+@mixin respond-to($media) {
+	@media #{$media} {
+		@content;
+	}	
+}

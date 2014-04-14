@@ -1,0 +1,4 @@
+# .gitignore
+
+# We use SCSS, so ignore compiled CSS files
+*.css

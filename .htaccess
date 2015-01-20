@@ -3,7 +3,7 @@ RewriteEngine on
 RewriteBase /
 
 # redirect everything to php
-RewriteRule ^(app/assets)($|/) - [L]
+RewriteRule ^(application/templates)($|/) - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)$ index.php/$1 [NC,L]

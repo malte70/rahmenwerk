@@ -131,7 +131,10 @@ class Application {
 			$this->controller->data,
 			array(
 				"encoding" => $this->encoding,
-				"content_type" => $this->content_type
+				"content_type" => $this->content_type,
+				"appname" => $this->appname,
+				"site_name" => $this->site_name,
+				"baseurl" => $this->baseurl
 			)
 		);
 	}
